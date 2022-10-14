@@ -1,24 +1,36 @@
 import React from "react";
-import useLocalStorage from "./auth/Hooks/useLocalStorage";
 import NavBar from "./NavBar";
+import GoogleMapReact from 'google-map-react';
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 export default function Home() {
-  const user = useLocalStorage.GetUser();
-
+    
+    const defaultProps = {
+        center: {
+          lat: 10.99835602,
+          lng: 77.01502627
+        },
+        zoom: 11
+      };
   return (
     <div>
       <NavBar />
-      <div style={{"marginLeft" : "25%"}}>
+      <div style={{ marginLeft: "25%" }}>
         <div className="w3-container w3-teal">
           <h1>Carte</h1>
         </div>
-
-        <img src="img_car.jpg" alt="Car" />
-
-        <div className="w3-container">
-          <h2>Sidebar Navigation Example</h2>
-          <p>The sidebar with is set with "style="width:25%".</p>
-          <p>The left margin of the page content is set to the same value.</p>
-        </div>
+        <div style={{ height: '95vh', width: '100%' }}>
+        <GoogleMapReact
+            bootstrapURLKeys={{ key: "" }}
+            defaultCenter={defaultProps.center}
+            defaultZoom={defaultProps.zoom}
+        >
+            <AnyReactComponent
+            lat={59.955413}
+            lng={30.337844}
+            text="My Marker"
+            />
+      </GoogleMapReact>
+      </div>
       </div>
     </div>
   );
