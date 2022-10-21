@@ -56,7 +56,7 @@ export default function CreateAccount() {
             >
               <div className="text-center">
                 <img
-                  src="img/logo.jpg"
+                  src="img/logo.png"
                   className="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
                   width="200px"
                   alt="profile"
