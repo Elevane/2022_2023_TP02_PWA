@@ -6,6 +6,9 @@ import Logout from "./Components/auth/Logout";
 import RequireAuth from "./Components/auth/RequireAuth";
 import CreateAccount from "./Components/auth/CreateAccount";
 import Dashboard from "./Components/Dashboard";
+import Edit from "./Components/Pages/edit";
+import Details from "./Components/Pages/details";
+
 function App({ children }) {
   return (
     <Router>
@@ -15,6 +18,22 @@ function App({ children }) {
           element={
             <RequireAuth>
               <Home />
+            </RequireAuth>
+          }
+        ></Route>
+         <Route
+          path="/dashboard/update/:id"
+          element={
+            <RequireAuth>
+              <Edit />
+            </RequireAuth>
+          }
+        ></Route>
+         <Route
+          path="/dashboard/details/:id"
+          element={
+            <RequireAuth>
+              <Details />
             </RequireAuth>
           }
         ></Route>

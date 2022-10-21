@@ -44,54 +44,86 @@ export default function CreateAccount() {
 
   return (
 
-    <div  id="login-form-wrap">
-      <h2 className="pb-2"> Create account </h2>{" "}
-      <form id="login-form" onSubmit={handleSubmit}>
-        <p>
-          <input
-            type="text"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-            name="email"
-            placeholder="Email"
-            required
-          />
-        </p>{" "}
-        <p>
-          <input
-            type="text"
-            id="username"
-            onChange={(e) => setUserName(e.target.value)}
-            name="username"
-            placeholder="username"
-            required
-          />
-        </p>{" "}
-     
-        <p>
-          <input
-            type="password"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-            name="password"
-            placeholder="Password"
-            required
-          />
-        </p>{" "}
-        <p>
-          <input type="submit" id="create" value="create" />
-        </p>{" "}
-      </form>{" "}
-      <div id="create-account-wrap">
-        <p>
-          {" "}
-          Already a member, {" "}
-          <a href="/login">
-            {"   "}
-            Login{" "}
-          </a>
-        </p>
-      </div>{" "}
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6 offset-md-3">
+          <h2 className="text-center text-dark mt-5">Map Marker</h2>
+          <div className="text-center mb-5 text-dark">TP PWA bastien AUBRY</div>
+          <div className="card my-5">
+            <form
+              className="card-body cardbody-color p-lg-5"
+              onSubmit={handleSubmit}
+            >
+              <div className="text-center">
+                <img
+                  src="img/logo.jpg"
+                  className="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                  width="200px"
+                  alt="profile"
+                />
+              </div>
+
+              <div className="mb-3">
+                <input
+                  type="text"
+                  id="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  name="email"
+                  placeholder="email"
+                  aria-describedby="emailHelp"
+                  className="form-control"
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  type="text"
+                  id="username"
+                  onChange={(e) => setUserName(e.target.value)}
+                  name="username"
+                  placeholder="username"
+                  aria-describedby="usernameHelp"
+                  className="form-control"
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  type="password"
+                  id="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  name="password"
+                  placeholder="password"
+                  className="form-control"
+                  required
+                />
+              </div>
+              <div className="text-center">
+                <input
+                  type="submit"
+                  id="Create"
+                  value="Create"
+                  className="btn btn-color px-5 mb-5 w-100"
+                />
+              </div>
+              <div
+                id="emailHelp"
+                className="form-text text-center mb-5 text-dark"
+              >
+                Already have an account?{" "}
+                <a
+                  href="/login"
+                 
+                  className="text-dark fw-bold"
+                >
+                  {" "}
+                  Login
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 
   );
