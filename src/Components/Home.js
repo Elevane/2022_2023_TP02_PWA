@@ -7,22 +7,16 @@ import { render } from "@testing-library/react";
 
 let  AnyReactComponent = ({props}) => {
  
-  <div
-  className="testmark"
-  style={{
-  width: "50px",
-  height: "50px",
-  borderRadius: "50%",
-  border: "2px solid red",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  backgroundColor: "white",
-}}
->
-<p style={{ margin: "0", width: "70%", height: "70%" }} >{props} qdqzdqz</p>
-</div>
-  ;
+  <div style={{position: "absolute",
+    top: "50%",
+    left: "50%",
+    width: "18px",
+    height: "18px",
+    backgroundColor: "#000",
+    border: "2px solid #fff",
+    borderRadius: "100%",
+    userSelect: "none",}} >{props}</div>;
+  
 ;}
 
 function getApps() {

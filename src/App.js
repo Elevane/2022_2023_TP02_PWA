@@ -7,8 +7,7 @@ import RequireAuth from "./Components/auth/RequireAuth";
 import CreateAccount from "./Components/auth/CreateAccount";
 import Dashboard from "./Components/Dashboard";
 import Edit from "./Components/Pages/edit";
-import Details from "./Components/Pages/details";
-
+import Create from "./Components/Pages/create";
 function App({ children }) {
   return (
     <Router>
@@ -30,13 +29,14 @@ function App({ children }) {
           }
         ></Route>
          <Route
-          path="/dashboard/details/:id"
+          path="/dashboard/create"
           element={
             <RequireAuth>
-              <Details />
+              <Create />
             </RequireAuth>
           }
         ></Route>
+        
         <Route
           path="/dashboard"
           element={
