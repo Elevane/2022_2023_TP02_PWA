@@ -5,19 +5,16 @@ import { useEffect, useState } from "react";
 import useLocalStorage from "./auth/Hooks/useLocalStorage";
 import { render } from "@testing-library/react";
 
-let  AnyReactComponent = ({props}) => {
- 
-  <div style={{position: "absolute",
+const AnyReactComponent = ({ text }) => <div style={{position: "absolute",
     top: "50%",
     left: "50%",
     width: "18px",
     height: "18px",
-    backgroundColor: "#000",
+    backgroundColor: "#2196F3",
     border: "2px solid #fff",
     borderRadius: "100%",
-    userSelect: "none",}} >{props}</div>;
-  
-;}
+    userSelect: "none",}} >{text}</div>;
+
 
 function getApps() {
   let user = useLocalStorage.GetUser();
@@ -54,23 +51,12 @@ export default function Home() {
         alert(value.errorMessage);
       } else {
         setApps(value.result);
+        
       }
     });
   }, []);
  
-  if (Apps.length > 0) {
-   
-    markers = Apps.map((app, index) => (
-      <AnyReactComponent
-        key={index}
-        lat={app.lattitude}
-        lng={app.longitude}
-        text={app.name}
-        style={{with :"50px", height: "50px"}}
-      />
-      
-    )); 
-  }
+
   return (
     <div>
       <NavBar />
@@ -84,13 +70,17 @@ export default function Home() {
             defaultCenter={defaultProps.center}
             defaultZoom={defaultProps.zoom}
           >
-            {markers}
-            <AnyReactComponent
-        key={1}
-        lat={47.1}
-        lng={-1}
-        text={"app.name"}
+            {Apps.map((app, index) => (
+      <AnyReactComponent
+        key={index}
+        lat={app.lattitude}
+        lng={app.longitude}
+        text={app.name}
+        style={{with :"50px", height: "50px"}}
       />
+      
+    ))}
+           
             </GoogleMapReact>
         </div>
       </div>

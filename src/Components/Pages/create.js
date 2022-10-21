@@ -8,7 +8,7 @@ import useLocalStorage
     left: "50%",
     width: "18px",
     height: "18px",
-    backgroundColor: "#000",
+    backgroundColor: "#2196F3",
     border: "2px solid #fff",
     borderRadius: "100%",
     userSelect: "none",}} >{text}</div>;
