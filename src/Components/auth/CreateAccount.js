@@ -29,7 +29,7 @@ export default function CreateAccount() {
             alert(value.errorMessage);
           }
           else if (value.result === undefined) {
-            alert("Failed connection Error");
+            alert("Failed connection Error value has no result" );
           }
           else {
             localStorage.setItem(
