@@ -21,8 +21,9 @@ export default function CreateAccount() {
     const [email, setEmail] = React.useState();
     const [password, setPassword] = React.useState();
     const [username, setUserName] = React.useState();
-
+    
     const handleSubmit = async e => {
+        
         e.preventDefault();
         await register(email, password, username).then((value) => {
           if (!value.isSuccess) {

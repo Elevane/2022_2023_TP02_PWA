@@ -25,6 +25,9 @@ export default function NavBar() {
         <a href="/dashboard" className="w3-bar-item w3-button">
           Appareils
         </a>
+        <a href="/analitycs" className="w3-bar-item w3-button">
+          Analitycs
+        </a>
         <a
           href="/logout"
           className="w3-bar-item w3-button"

@@ -8,6 +8,7 @@ import CreateAccount from "./Components/auth/CreateAccount";
 import Dashboard from "./Components/Dashboard";
 import Edit from "./Components/Pages/edit";
 import Create from "./Components/Pages/create";
+import Analitycs from "./Components/Analitycs";
 function App({ children }) {
   return (
     <Router>
@@ -25,6 +26,14 @@ function App({ children }) {
           element={
             <RequireAuth>
               <Edit />
+            </RequireAuth>
+          }
+        ></Route>
+         <Route
+          path="/Analitycs"
+          element={
+            <RequireAuth>
+              <Analitycs />
             </RequireAuth>
           }
         ></Route>

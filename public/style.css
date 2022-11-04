@@ -23,3 +23,12 @@
   .marker {
     
   }
+  .chart{
+    width: 30%;
+    height: 30%;
+    margin: 25px;
+    padding: 25px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+  }
+ 
