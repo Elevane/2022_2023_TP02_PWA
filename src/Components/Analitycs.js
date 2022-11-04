@@ -7,6 +7,20 @@ import { Chart as ChartJS, ArcElement, Tooltip, LegendCategoryScale,
     Title, Legend, CategoryScale} from 'chart.js';
 import { Doughnut, Line } from 'react-chartjs-2';
 import useLocalStorage from "./auth/Hooks/useLocalStorage";
+function getScore() {
+  let user = useLocalStorage.GetUser();
+  let token = user.token;
+
+  return fetch(process.env.REACT_APP_DBHOST_SCORE, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      Authorization: "Bearer " + user.token,
+      Accept: "*/*",
+    },
+  }).then((data) =>  data.json());
+}
 function getUsers() {
     let user = useLocalStorage.GetUser();
     let token = user.token;
@@ -21,6 +35,8 @@ function getUsers() {
       },
     }).then((data) =>  data.json());
   }
+
+
   const COLORLIST =  [
     '#e76f51',
     "#2a9d8f",
@@ -80,6 +96,8 @@ export default function Analitycs() {
     const [apiData, setApiData] = useState();
     const [doughnutData, setDoughnutData] = useState(defaultDoughNutData);
     const [lineData, setLineData] = useState(defaultLineChart)
+    const [scoreData, setScoreData] = useState([])
+    let scoreList = [];
     const procesDoughNutData = (ad) => {
         if(ad == undefined || ad == null)
             return;
@@ -138,20 +156,43 @@ export default function Analitycs() {
             datasets: lineUsers
             ,
           }
-          console.log(dataset)
+          
         setLineData(dataset)
      }
 
     useEffect(() => {    
+      getScore().then(e => {
+        setScoreData(e.result);
+    })
         getUsers().then(e => {
             setApiData(e.result);
-        })
+        })        
     }, [])
-      
+
     useEffect(() => {
         procesDoughNutData(apiData)
         processLineChart(apiData)
+        
     }, [apiData])
+
+    useEffect(() => {
+      //processScore();
+  }, [scoreData])
+    
+
+    if(scoreData.length > 0){
+      scoreData.sort((a, b) => a.score - b.score);
+      scoreList = scoreData.map((e)=>  (
+        <tr>
+          <td>{e.score}</td>
+        </tr>
+      )
+    );
+    }
+      
+    
+
+    
   return (
     <div>
       <NavBar />
@@ -163,6 +204,18 @@ export default function Analitycs() {
         <ul style={{ listStyle:"none", display: "flex", flexWrap: "wrap"}}>          
            <li className="chart"> <Doughnut data={doughnutData} />  </li>  
            <li className="chart"> <Line options={LineChartOptions} data={lineData} /></li>
+           <li className="chart">  <table className="table" style={{ margin: "50px", width: "80%" }}>
+          <thead>
+            <tr>
+              <th scope="col">Score</th>
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+          {scoreList}
+          </tbody>
+        </table></li>
         </ul>
         
       </div>
